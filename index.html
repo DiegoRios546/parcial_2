@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- iconos font-awesome -->
+    <script src="https://kit.fontawesome.com/9d0ecd6d4d.js" crossorigin="anonymous"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Acceso</h1>
+        <p id="error" style="color:red;"></p>
+        <form id="loginForm">
+            <div class="form__group form__div">
+                <span><i class="fa-solid fa-envelope"></i></span>
+                <input class="campo"  id="email" placeholder="Direccion de correo electronico" required>
+            </div>
+            <div class="form__group form__div">
+                <span><i class="fa-solid fa-lock"></i></span>
+                <input class="campo" type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <div class="form__group">
+                <button type="submit">Acceso</button>
+            </div>
+            <div class="form__group__enlace">
+                <a class="enlace" href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+        </form>
+        <hr>
+        <p>Inicie sesión con su cuenta de redes sociales</p>
+        <div class="div__group">
+            <a class="redes" href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a class="redes" href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+    </div>
+
+    <script>
+        const usuarios = {
+            "examen_parcial2": "Voyporel100"
+        };
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (usuarios[email] && usuarios[email] === password) {
+                window.location.href = "parcial1/index.html"; // Redirigir a la carpeta parcial1
+            } else {
+                document.getElementById('error').textContent = "Usuario o contraseña incorrectos.";
+            }
+        });
+
+
+        var input=document.querySelectorAll(".campo")
+var div=document.querySelectorAll(".form__div")
+input.forEach(function(el, index){
+    el.addEventListener("focus", function(){
+        if (index==0) {
+            div[0].style.border="solid 1px black"
+            div[1].style.border="solid 1px rgb(145, 145, 145)"
+        } else {
+            if (index==1) {
+                div[1].style.border="solid 1px black"
+                div[0].style.border="solid 1px rgb(145, 145, 145)"
+            }
+        }
+    })
+})
+    </script>
+</body>
+
+</html>
